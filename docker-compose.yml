@@ -1,0 +1,20 @@
+version: "3.9"
+networks:
+  default-network:
+    driver: bridge
+services:
+  api:
+    build: 
+      context: .
+      dockerfile: Dockerfile_api
+    image: nordcloudtechassignmentregistry.azurecr.io/api
+    ports:
+      - "8000:5001"
+    networks:
+      - default-network
+  test:
+    build: 
+      context: .
+      dockerfile: Dockerfile_test
+    networks:
+      - default-network
