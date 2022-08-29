@@ -10,7 +10,7 @@ https://ncassignmentapp.azurewebsites.net/
 
     | Parameter  | Type | Description |
     | ------------- | ------------- | ------------- |
-    | x  | float  | Device x coordinat |
+    | x  | float  | Device x coordinate |
     | y  | float  | Device y coordinate |
     | solution  | string  | Solution to use. Either 'simple' or 'numpy'.  |
     | dataset  | string  | Dataset to use. Either '5.txt' or '5M.txt'. |
