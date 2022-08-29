@@ -1,5 +1,5 @@
 # nordcloud-tech-assignment
-https://ncassignmentapp.azurewebsites.net/
+https://ncassignmentapp.azurewebsites.net/?x=1.0&y=4.0&solution=numpy&dataset=5M.csv
 
 ## Run locally 
 1. Install docker
