@@ -37,6 +37,6 @@ def generate_station_data(num_lines: int) -> Iterable[str]:
 # You may use this file to generate new datasets
 if (__name__ == '__main__'):
     num_lines = 500 * 10 ** 6
-    file_name = 'data/500M.txt'
+    file_name = 'data/500M.csv'
     with open(file_name, 'w') as file:
         file.writelines(generate_station_data(num_lines))

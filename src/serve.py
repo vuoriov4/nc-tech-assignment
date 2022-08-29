@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request 
 from functools import partial
 import pandas as pd
@@ -7,8 +8,8 @@ from data import read_station_data
 
 # Load datasets to memory. See README.md on the limitations.
 datasets = {
-    '5.txt':  list(read_station_data('./data/5.txt')),
-    '5M.txt': list(read_station_data('./data/5M.txt')),
+    filename: list(read_station_data('./data/%s' % filename))
+    for filename in os.listdir('./data') if filename.endswith('csv')
 }
 
 # Transform to dataframes for numpy.
@@ -33,8 +34,8 @@ def api():
         return "Invalid parameters", 400
     x = float(request.args['x'])
     y = float(request.args['y'])
-    dataset = request.args.get('dataset', '5.txt')
-    solution = request.args.get('solution', 'numpy')
+    dataset = request.args['dataset']
+    solution = request.args['solution']
     result = solutions[solution](dataset)(x, y)
     if (result == None):
         return "No network station within reach for point x=%.1f, y=%.1f" % (x, y), 200
@@ -52,10 +53,12 @@ def validate(args: dict):
             float(args[num])
         except ValueError:
             return False
-    if ('solution' in args):
-        if (not args['solution'] in ['simple', 'numpy']):
-            return False
-    if ('dataset' in args):
-        if (not args['dataset'] in datasets.keys()):
-            return False
+    if not ('solution' in args):
+        return False
+    if (not args['solution'] in solutions.keys()):
+        return False
+    if (not 'dataset' in args):
+        return False
+    if (not args['dataset'] in datasets.keys()):
+        return False
     return True

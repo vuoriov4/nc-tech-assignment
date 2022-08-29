@@ -5,15 +5,15 @@ https://ncassignmentapp.azurewebsites.net/
 1. Install docker
 2. Clone the repository
 3. Build the container: `docker build -t api -f Dockerfile_api .`
-4. Run the container: `docker run -p 8000:5001 api`
-4. The API should become available at `http://localhost:8000` with the following available query parameters:
+4. Run the container: `docker run -p 8000:8000 api`
+4. The API should become available at `http://localhost:8000` with the following required query parameters:
 
     | Parameter  | Type | Description |
     | ------------- | ------------- | ------------- |
-    | x  | float  | Device x coordinate (required) |
-    | y  | float  | Device y coordinate (required) |
-    | solution  | string  | Solution to use. Either 'simple' or 'numpy', defaults to 'numpy'  |
-    | dataset  | string  | Dataset to use. Either '5.txt' or '5M.txt'. Defaults to '5.txt' |
+    | x  | float  | Device x coordinat |
+    | y  | float  | Device y coordinate |
+    | solution  | string  | Solution to use. Either 'simple' or 'numpy'.  |
+    | dataset  | string  | Dataset to use. Either '5.txt' or '5M.txt'. |
 
     Example: `http://localhost:5001?x=2.0&y=5.0`.
 6. The response should be plaintext with status code 200, for example *"Best network station for point x,y is x,y with speed z"* or *"No network station within reach for point x,y"*. If something goes wrong it may also return an error with status code 400 (Bad request) or 500 (Internal server error).
