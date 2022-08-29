@@ -13,9 +13,9 @@ https://ncassignmentapp.azurewebsites.net/
     | x  | float  | Device x coordinate |
     | y  | float  | Device y coordinate |
     | solution  | string  | Solution to use. Either 'simple' or 'numpy'.  |
-    | dataset  | string  | Dataset to use. Either '5.txt' or '5M.txt'. |
+    | dataset  | string  | Dataset to use. Either '5.csv' or '5M.csv'. |
 
-    Example: `http://localhost:5001?x=2.0&y=5.0`.
+    Example: `http://localhost:8000/?x=1.0&y=4.0&solution=numpy&dataset=5M.csv`
 6. The response should be plaintext with status code 200, for example *"Best network station for point x,y is x,y with speed z"* or *"No network station within reach for point x,y"*. If something goes wrong it may also return an error with status code 400 (Bad request) or 500 (Internal server error).
 
 ## Run tests 
