@@ -62,7 +62,7 @@ https://ncassignmentapp.azurewebsites.net/
 7. Finally, publish the image. 
     - `az webapp config container set --name ncassignmentapp --resource-group ncassignment --docker-custom-image-name ncassignmentregistry.azurecr.io/api:latest --docker-registry-server-url https://ncassignmentregistry.azurecr.io`
     
-    For re-deployment, you only need to rebuild, push the image and run the above command.
+    For re-deployment, you only need to rebuild, push the image and restart the App Service.
 
 ## Limitations
 
