@@ -1,5 +1,6 @@
 # nordcloud-tech-assignment
-https://ncassignmentapp.azurewebsites.net/?x=1.0&y=4.0&solution=numpy&dataset=5M.csv
+Solving the most suitable (with highest non-zero speed) network station for a device at a given point (x, y).
+https://ncassignmentapp.azurewebsites.net/?x=0.0&y=0.0&solution=numpy&dataset=5.csv
 
 ## Run locally 
 1. Install docker
@@ -15,7 +16,7 @@ https://ncassignmentapp.azurewebsites.net/?x=1.0&y=4.0&solution=numpy&dataset=5M
     | solution  | string  | Solution to use. Either 'simple' or 'numpy'.  |
     | dataset  | string  | Dataset to use. Either '5.csv' or '5M.csv'. |
 
-    Example: `http://localhost:8000/?x=1.0&y=4.0&solution=numpy&dataset=5M.csv`
+    Example: `http://localhost:8000/?x=0.0&y=0.0&solution=numpy&dataset=5.csv`
 6. The response should be plaintext with status code 200, for example *"Best network station for point x,y is x,y with speed z"* or *"No network station within reach for point x,y"*. If something goes wrong it may also return an error with status code 400 (Bad request) or 500 (Internal server error).
 
 ## Run tests 
