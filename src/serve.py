@@ -11,15 +11,15 @@ datasets = {
     '5M.txt': list(read_station_data('./data/5M.txt')),
 }
 
-# Transform datasets to dataframes for numpy.
+# Transform to dataframes for numpy.
 dataframes = {
     key: pd.DataFrame.from_dict(value).to_numpy() 
     for (key, value) in datasets.items() 
 }
 
-# Methods and their respective imports.
-# Example usage: methods['simple']('5.txt')(x, y)
-methods = {
+# Solutions and their respective imports.
+# Example usage: solutions['simple']('5.txt')(x, y)
+solutions = {
     'simple': lambda dataset: partial(get_optimal_station_simple, datasets[dataset]),
     'numpy': lambda dataset: partial(get_optimal_station_numpy, dataframes[dataset])
 }
@@ -34,8 +34,8 @@ def api():
     x = float(request.args['x'])
     y = float(request.args['y'])
     dataset = request.args.get('dataset', '5.txt')
-    method = request.args.get('method', 'numpy')
-    result = methods[method](dataset)(x, y)
+    solution = request.args.get('solution', 'numpy')
+    result = solutions[solution](dataset)(x, y)
     if (result == None):
         return "No network station within reach for point x=%.1f, y=%.1f" % (x, y), 200
     else:
@@ -52,8 +52,8 @@ def validate(args: dict):
             float(args[num])
         except ValueError:
             return False
-    if ('method' in args):
-        if (not args['method'] in ['simple', 'numpy']):
+    if ('solution' in args):
+        if (not args['solution'] in ['simple', 'numpy']):
             return False
     if ('dataset' in args):
         if (not args['dataset'] in datasets.keys()):
